@@ -1,0 +1,1421 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: radial-gradient(
+        ellipse at center,
+        #192344 0%,
+        #0b1026 65%,
+        #050815 100%
+    );
+    color: #f2d58a;
+    font-family: Georgia, serif;
+}
+
+.welcome {
+    min-height: 100vh;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.eyebrow {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: #bca76d;
+    animation: fadeIn 2s ease forwards;
+}
+
+h1 {
+    font-size: clamp(38px, 6vw, 78px);
+    font-weight: normal;
+    letter-spacing: 2px;
+    margin: 25px 0;
+}
+
+/* Each letter animates individually */
+
+.letter {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(35px);
+    animation: letterReveal 0.9s ease forwards;
+}
+
+@keyframes letterReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(35px);
+        filter: blur(8px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+.subtitle {
+    font-size: 20px;
+    font-style: italic;
+    color: #e8dcb8;
+    opacity: 0;
+    animation: fadeIn 2s ease 1.5s forwards;
+}
+
+/* Golden thread divider */
+
+.thread-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(450px, 85vw);
+    margin: 35px auto;
+}
+
+.thread {
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #d4af37,
+        #ffe6a0
+    );
+    transform: scaleX(0);
+    animation: growThread 1.8s ease 2s forwards;
+}
+
+.thread.left {
+    transform-origin: right;
+}
+
+.thread.right {
+    transform-origin: left;
+    background: linear-gradient(
+        90deg,
+        #ffe6a0,
+        #d4af37,
+        transparent
+    );
+}
+
+@keyframes growThread {
+    to {
+        transform: scaleX(1);
+    }
+}
+
+/* Glowing central star */
+
+.sparkle {
+    font-size: 30px;
+    margin: 0 15px;
+    color: #ffe6a0;
+    opacity: 0;
+    animation:
+        fadeIn 1s ease 2.3s forwards,
+        starGlow 2s ease-in-out 3.3s infinite alternate;
+}
+
+@keyframes starGlow {
+    from {
+        text-shadow: 0 0 5px #d4af37;
+        transform: scale(1);
+    }
+
+    to {
+        text-shadow:
+            0 0 15px #ffe6a0,
+            0 0 30px #d4af37;
+        transform: scale(1.2);
+    }
+}
+
+.tagline {
+    color: #bca76d;
+    font-size: 15px;
+    letter-spacing: 1px;
+    line-height: 1.8;
+    opacity: 0;
+    animation: fadeIn 2s ease 2.7s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .letter, .subtitle, .sparkle, .tagline {
+        opacity: 1;
+        transform: none;
+        filter: none;
+    }
+
+    .thread {
+        transform: scaleX(1);
+    }
+}
+/* Journey button */
+
+.begin-btn {
+    margin-top: 35px;
+    padding: 16px 35px;
+    background: transparent;
+    color: #f2d58a;
+    border: 1px solid #d4af37;
+    border-radius: 40px;
+    font-family: Georgia, serif;
+    font-size: 17px;
+    letter-spacing: 1px;
+    cursor: pointer;
+
+    opacity: 0;
+    animation: fadeIn 1.5s ease 4s forwards;
+
+    transition:
+        background 0.4s,
+        box-shadow 0.4s,
+        transform 0.4s;
+}
+
+.begin-btn:hover {
+    background: rgba(212, 175, 55, 0.15);
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+    transform: translateY(-4px);
+}
+
+.begin-btn span {
+    margin-left: 10px;
+}
+
+/* Magical transition screen */
+
+.transition-screen {
+    position: fixed;
+    inset: 0;
+    background: #080d20;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s;
+}
+
+.transition-screen.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.transition-thread {
+    width: 0;
+    height: 2px;
+    background: #ffe6a0;
+    box-shadow:
+        0 0 15px #d4af37,
+        0 0 35px #ffe6a0;
+}
+
+.transition-screen.active .transition-thread {
+    animation: threadExpand 2s ease forwards;
+}
+
+@keyframes threadExpand {
+    from { width: 0; }
+    to { width: 85vw; }
+}
+
+.transition-screen p {
+    color: #f2d58a;
+    font-style: italic;
+    margin-top: 35px;
+    opacity: 0;
+}
+
+.transition-screen.active p {
+    animation: fadeIn 1.5s ease 1s forwards;
+}
+/* First interactive scene */
+
+.story-scene {
+    min-height: 100vh;
+    padding: 65px 20px;
+    text-align: center;
+    background: #0b1026;
+    color: #f2d58a;
+}
+
+.story-scene[hidden],
+.story-dialogue[hidden] {
+    display: none;
+}
+
+.story-scene h2 {
+    font-size: clamp(28px, 5vw, 45px);
+    font-weight: normal;
+}
+
+.scene-description {
+    color: #e8dcb8;
+    font-style: italic;
+    line-height: 1.7;
+}
+
+.story-world {
+    position: relative;
+    width: min(700px, 100%);
+    height: 350px;
+    margin: 35px auto;
+    overflow: hidden;
+    border-radius: 18px;
+    background: linear-gradient(
+        #222c54 0%,
+        #ad7476 65%,
+        #36304a 100%
+    );
+}
+
+.sun {
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background: #f6c987;
+    box-shadow: 0 0 50px #f6c987;
+    top: 55px;
+    right: 22%;
+}
+
+.building {
+    position: absolute;
+    bottom: 0;
+    background: #262943;
+}
+
+.building-left {
+    width: 25%;
+    height: 65%;
+    left: 0;
+}
+
+.building-right {
+    width: 22%;
+    height: 58%;
+    right: 0;
+}
+
+.bench {
+    position: absolute;
+    left: 50%;
+    bottom: 60px;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 50px;
+}
+
+.bench-seat {
+    width: 100%;
+    height: 12px;
+    background: #bc885d;
+    border-radius: 4px;
+}
+
+.bench-leg {
+    position: absolute;
+    width: 8px;
+    height: 40px;
+    background: #765a53;
+}
+
+.left-leg { left: 15px; }
+.right-leg { right: 15px; }
+
+/* Letter */
+
+#letter {
+    position: absolute;
+    left: 50%;
+    bottom: 112px;
+    transform: translateX(-50%);
+    background: #f5e2bc;
+    color: #73513c;
+    border: 1px solid #caa96d;
+    border-radius: 3px;
+    padding: 3px 12px;
+    font-size: 25px;
+    cursor: pointer;
+    box-shadow: 0 0 15px #f2d58a;
+    animation: letterFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes letterFloat {
+    50% {
+        transform: translate(-50%, -7px);
+    }
+}
+
+.story-dialogue {
+    max-width: 520px;
+    margin: auto;
+    padding: 25px;
+    border: 1px solid #8e754b;
+    border-radius: 15px;
+    background: #151b35;
+    line-height: 1.8;
+}
+
+.choice {
+    padding: 12px 18px;
+    margin: 8px;
+    background: transparent;
+    border: 1px solid #d4af37;
+    border-radius: 25px;
+    color: #f2d58a;
+    cursor: pointer;
+}
+
+.choice:hover {
+    background: #514326;
+}
+
+.story-result {
+    color: #f2d58a;
+    font-size: 19px;
+    line-height: 1.7;
+    max-width: 550px;
+    margin: 25px auto;
+}
+/* Hide the homepage after the journey begins */
+
+.welcome[hidden] {
+    display: none !important;
+}
+
+/* Hide the story until it begins */
+
+.story-scene[hidden] {
+    display: none !important;
+}
+/* Make the envelope clearly visible */
+
+#letter {
+    position: absolute;
+    left: 50%;
+    bottom: 112px;
+    z-index: 10;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 55px;
+    height: 38px;
+
+    background: #f5e2bc;
+    color: #73513c;
+    border: 2px solid #d4af37;
+    border-radius: 5px;
+
+    font-size: 26px;
+    cursor: pointer;
+
+    box-shadow:
+        0 0 15px #f2d58a,
+        0 0 30px rgba(242, 213, 138, 0.5);
+
+    animation: envelopeFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes envelopeFloat {
+    0%, 100% {
+        transform: translate(-50%, 0);
+    }
+
+    50% {
+        transform: translate(-50%, -8px);
+    }
+}
+#letter {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: flex !important;
+    z-index: 999 !important;
+    position: absolute;
+    left: 50%;
+    bottom: 112px;
+    transform: translateX(-50%);
+    animation: none !important;
+
+    background: #fff1c9;
+    color: #654321;
+    border: 2px solid gold;
+    border-radius: 5px;
+
+    width: 65px;
+    height: 45px;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    cursor: pointer;
+}
+/* Golden thread that appears after a choice */
+
+.magic-thread {
+    position: absolute;
+    left: 50%;
+    bottom: 135px;
+
+    width: 0;
+    height: 3px;
+
+    background: linear-gradient(
+        90deg,
+        #fff5cc,
+        #ffd700,
+        #f2d58a
+    );
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 0 12px #ffd700,
+        0 0 25px #d4af37;
+
+    z-index: 8;
+
+    transition: width 2.5s ease;
+}
+
+.magic-thread.appear {
+    width: 38%;
+}
+/* CHAPTER TWO */
+
+.second-world {
+    background: linear-gradient(
+        #222c54 0%,
+        #795b83 55%,
+        #bc7970 100%
+    );
+}
+
+/* Streetlamp */
+
+.streetlamp {
+    position: absolute;
+    left: 22%;
+    bottom: 0;
+    height: 220px;
+    width: 40px;
+}
+
+.lamp-post {
+    position: absolute;
+    bottom: 0;
+    left: 18px;
+    width: 5px;
+    height: 185px;
+    background: #302b42;
+}
+
+.lamp-light {
+    position: absolute;
+    top: 12px;
+    left: 5px;
+    width: 32px;
+    height: 32px;
+    background: #ffe6a0;
+    border-radius: 50%;
+    box-shadow:
+        0 0 25px #ffd700,
+        0 0 65px rgba(255,215,0,.6);
+    animation: lampGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes lampGlow {
+    from { opacity: .7; }
+    to { opacity: 1; }
+}
+
+/* Elderly woman */
+
+.woman {
+    position: absolute;
+    bottom: 45px;
+    left: 60%;
+    width: 90px;
+    height: 150px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 5;
+    transition: transform .4s;
+}
+
+.woman:hover {
+    transform: scale(1.08);
+}
+
+.woman-head {
+    position: absolute;
+    top: 12px;
+    left: 30px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #d7a77c;
+    box-shadow: 0 -8px 0 #c9c9d0;
+}
+
+.woman-body {
+    position: absolute;
+    top: 49px;
+    left: 20px;
+    width: 55px;
+    height: 90px;
+    background: #786a98;
+    border-radius: 20px 20px 8px 8px;
+}
+
+.grocery-bag {
+    position: absolute;
+    top: 85px;
+    left: 0;
+    width: 28px;
+    height: 37px;
+    background: #c99d63;
+    border-radius: 3px;
+    transform: rotate(-12deg);
+    box-shadow: 0 0 12px rgba(255,215,0,.3);
+}
+
+/* Chapter two choices */
+
+.choice-two {
+    padding: 12px 18px;
+    margin: 8px;
+    background: transparent;
+    color: #f2d58a;
+    border: 1px solid #d4af37;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: Georgia, serif;
+}
+
+.choice-two:hover {
+    background: rgba(212,175,55,.2);
+}
+
+/* Golden thread */
+
+#thread-two {
+    left: 60%;
+    bottom: 115px;
+}
+
+#thread-two.appear {
+    width: 32%;
+}
+
+/* Continue button */
+
+#next-chapter[hidden] {
+    display: none !important;
+}
+
+#next-chapter {
+    display: block;
+    opacity: 1;
+    animation: none;
+    margin: 30px auto;
+}
+#continue-two[hidden] {
+    display: none !important;
+}
+
+#continue-two {
+    display: block;
+    opacity: 1;
+    animation: none;
+    margin: 30px auto;
+}
+/* Smooth transitions between chapters */
+
+.story-scene {
+    transition: opacity 0.8s ease;
+}
+
+.story-scene.fade-out {
+    opacity: 0;
+}
+
+.story-scene.fade-in {
+    animation: chapterAppear 1.5s ease forwards;
+}
+
+@keyframes chapterAppear {
+    from {
+        opacity: 0;
+        filter: blur(8px);
+    }
+
+    to {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+/* Chapter Two help button */
+
+.help-button {
+    display: block;
+    margin: 25px auto;
+    padding: 15px 38px;
+
+    background: transparent;
+    color: #f2d58a;
+    border: 1px solid #d4af37;
+    border-radius: 40px;
+
+    font-family: Georgia, serif;
+    font-size: 18px;
+    cursor: pointer;
+
+    box-shadow: 0 0 15px rgba(212,175,55,0.2);
+    transition: all 0.4s ease;
+}
+
+.help-button:hover {
+    background: rgba(212,175,55,0.2);
+    box-shadow: 0 0 25px rgba(212,175,55,0.5);
+    transform: translateY(-4px);
+}
+
+.help-button[hidden] {
+    display: none !important;
+}
+/* CHAPTER THREE */
+
+.playground-world {
+    background: linear-gradient(
+        #20294d 0%,
+        #66547e 55%,
+        #c18586 100%
+    );
+}
+
+.playground-ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 65px;
+    background: #30354b;
+}
+
+/* Swing */
+
+.swing-frame {
+    position: absolute;
+    left: 17%;
+    bottom: 60px;
+    width: 130px;
+    height: 170px;
+    border-left: 6px solid #3a3450;
+    border-right: 6px solid #3a3450;
+    border-top: 8px solid #3a3450;
+}
+
+.swing-rope {
+    position: absolute;
+    top: 0;
+    height: 115px;
+    width: 2px;
+    background: #e0c89d;
+}
+
+.rope-left { left: 35px; }
+.rope-right { right: 35px; }
+
+.swing-seat {
+    position: absolute;
+    top: 115px;
+    left: 35px;
+    width: 52px;
+    height: 7px;
+    background: #a47764;
+}
+
+/* Bench */
+
+.playground-bench {
+    position: absolute;
+    bottom: 65px;
+    right: 18%;
+    width: 125px;
+    height: 12px;
+    background: #a47764;
+    border-radius: 4px;
+}
+
+.playground-bench-seat {
+    width: 100%;
+    height: 100%;
+    box-shadow:
+        12px 25px 0 -3px #67505c,
+        -12px 25px 0 -3px #67505c;
+}
+
+/* Child */
+
+.lonely-child {
+    position: absolute;
+    right: 23%;
+    bottom: 80px;
+    width: 60px;
+    height: 105px;
+}
+
+.child-head {
+    position: absolute;
+    top: 0;
+    left: 16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #d7a77c;
+    box-shadow: 0 -6px 0 #3a3040;
+}
+
+.child-body {
+    position: absolute;
+    top: 34px;
+    left: 9px;
+    width: 48px;
+    height: 70px;
+    border-radius: 15px;
+    background: #7c9ab1;
+}
+
+/* Choices */
+
+.choice-three {
+    padding: 12px 18px;
+    margin: 8px;
+    background: transparent;
+    color: #f2d58a;
+    border: 1px solid #d4af37;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: Georgia, serif;
+}
+
+.choice-three:hover {
+    background: rgba(212,175,55,.2);
+}
+
+/* Third golden thread */
+
+#thread-three {
+    left: 60%;
+    bottom: 145px;
+}
+
+#thread-three.appear {
+    width: 35%;
+}
+
+#continue-four[hidden] {
+    display: none !important;
+}
+#continue-four {
+    display: block;
+    margin: 30px auto;
+}
+
+#continue-four[hidden] {
+    display: none !important;
+}
+
+/* Make sure hidden chapters stay hidden */
+
+.story-scene[hidden] {
+    display: none !important;
+}
+/* Chapter Three: gently moving swing */
+
+.swing-rope,
+.swing-seat {
+    animation: gentleSwing 3s ease-in-out infinite alternate;
+}
+
+@keyframes gentleSwing {
+    from {
+        transform: translateX(-4px);
+    }
+    to {
+        transform: translateX(4px);
+    }
+}
+/* Magical fireflies */
+
+.firefly {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ffe6a0;
+    box-shadow: 0 0 12px #ffd700, 0 0 25px #ffd700;
+    animation: fireflyFloat 4s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+.firefly-one { left: 15%; top: 25%; }
+.firefly-two { left: 35%; top: 45%; animation-delay: 1s; }
+.firefly-three { left: 65%; top: 20%; animation-delay: 2s; }
+.firefly-four { left: 80%; top: 55%; animation-delay: .5s; }
+.firefly-five { left: 50%; top: 70%; animation-delay: 1.5s; }
+
+@keyframes fireflyFloat {
+    0% {
+        opacity: .3;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-25px);
+    }
+}
+/* Golden sparkle after a kind action */
+
+.playground-world.moment-created {
+    animation: momentGlow 1.5s ease;
+}
+
+@keyframes momentGlow {
+    50% {
+        box-shadow:
+            0 0 35px rgba(255, 215, 0, 0.6),
+            inset 0 0 45px rgba(255, 215, 0, 0.2);
+    }
+}
+/* CHAPTER FOUR — MOONLIT GARDEN */
+
+.garden-world {
+    background: linear-gradient(
+        #101831 0%,
+        #28385a 65%,
+        #536076 100%
+    );
+}
+
+.garden-moon {
+    position: absolute;
+    top: 35px;
+    right: 18%;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background: #fff1c4;
+    box-shadow: 0 0 35px #f2d58a;
+}
+
+.garden-ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 85px;
+    background: #253c37;
+}
+
+.garden-flower {
+    position: absolute;
+    bottom: 70px;
+    color: #f3b9d1;
+    font-size: 35px;
+    transform-origin: bottom center;
+    animation: flowerSway 3s ease-in-out infinite alternate;
+}
+
+.flower-one { left: 12%; }
+.flower-two { left: 28%; animation-delay: .7s; }
+.flower-three { right: 16%; animation-delay: 1.2s; }
+.flower-four { right: 32%; animation-delay: .4s; }
+
+@keyframes flowerSway {
+    from { transform: rotate(-9deg); }
+    to { transform: rotate(9deg); }
+}
+
+/* Little bird */
+
+.garden-bird {
+    position: absolute;
+    bottom: 85px;
+    left: 47%;
+    width: 90px;
+    height: 70px;
+    z-index: 3;
+    animation: birdBreathe 3s ease-in-out infinite;
+}
+
+.bird-body {
+    position: absolute;
+    bottom: 0;
+    width: 75px;
+    height: 48px;
+    border-radius: 55% 55% 45% 45%;
+    background: #a9b8d2;
+}
+
+.bird-head {
+    position: absolute;
+    top: 0;
+    left: 43px;
+    width: 39px;
+    height: 39px;
+    border-radius: 50%;
+    background: #bfcbe0;
+}
+
+.bird-eye {
+    position: absolute;
+    top: 14px;
+    left: 68px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #22283a;
+}
+
+.bird-beak {
+    position: absolute;
+    top: 24px;
+    left: 80px;
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 13px solid #e7b46d;
+}
+
+@keyframes birdBreathe {
+    50% { transform: translateY(-3px); }
+}
+
+.water-dish {
+    position: absolute;
+    left: 61%;
+    bottom: 80px;
+    width: 65px;
+    height: 15px;
+    border-radius: 0 0 50% 50%;
+    background: #9c8a78;
+    border-top: 3px solid #c9b9a5;
+}
+
+/* Chapter Four choices */
+
+.choice-four {
+    padding: 12px 18px;
+    margin: 8px;
+    background: transparent;
+    color: #f2d58a;
+    border: 1px solid #d4af37;
+    border-radius: 25px;
+    font-family: Georgia, serif;
+    cursor: pointer;
+}
+
+.choice-four:hover {
+    background: rgba(212,175,55,.2);
+}
+
+/* Fourth golden thread */
+
+#thread-four {
+    left: 47%;
+    bottom: 135px;
+}
+
+#thread-four.appear {
+    width: 45%;
+}
+
+.garden-world.moment-created {
+    animation: gardenGlow 1.5s ease;
+}
+
+@keyframes gardenGlow {
+    50% {
+        box-shadow: 0 0 40px rgba(255,215,0,.6);
+    }
+}
+
+/* Continue button visibility */
+
+#continue-five[hidden] {
+    display: none !important;
+}
+
+#continue-five {
+    margin: 30px auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .garden-flower,
+    .garden-bird {
+        animation: none;
+    }
+}
+/* CHAPTER FIVE — THE BRIDGE BETWEEN US */
+
+.bridge-world {
+    background: linear-gradient(
+        #10172f 0%,
+        #34375e 60%,
+        #6e6080 100%
+    );
+}
+
+.bridge-moon {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background: #fff0c2;
+    box-shadow: 0 0 40px #f2d58a;
+}
+
+.bridge-water {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 105px;
+    background: linear-gradient(
+        #344665,
+        #172743
+    );
+}
+
+.bridge-path {
+    position: absolute;
+    bottom: 75px;
+    width: 100%;
+    height: 55px;
+    background: #665569;
+    border-top: 6px solid #a38b86;
+}
+
+.bridge-railing {
+    position: absolute;
+    bottom: 125px;
+    width: 100%;
+    height: 8px;
+    background: #c5a078;
+    box-shadow:
+        0 35px 0 #a37d69;
+}
+
+/* Two friends */
+
+.friend {
+    position: absolute;
+    bottom: 125px;
+    width: 55px;
+    height: 115px;
+    z-index: 4;
+}
+
+.friend-left { left: 25%; }
+.friend-right { right: 25%; }
+
+.friend-head {
+    position: absolute;
+    left: 12px;
+    top: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #d7a77c;
+}
+
+.friend-body {
+    position: absolute;
+    top: 35px;
+    width: 55px;
+    height: 80px;
+    border-radius: 18px 18px 5px 5px;
+    background: #8b759f;
+}
+
+.friend-right .friend-body {
+    background: #668e9b;
+}
+
+/* Choices */
+
+.choice-five {
+    padding: 12px 18px;
+    margin: 8px;
+    background: transparent;
+    color: #f2d58a;
+    border: 1px solid #d4af37;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: Georgia, serif;
+}
+
+.choice-five:hover {
+    background: rgba(212,175,55,.2);
+}
+
+/* Fifth golden thread */
+
+#thread-five {
+    left: 28%;
+    bottom: 195px;
+}
+
+#thread-five.appear {
+    width: 45%;
+}
+
+.bridge-world.moment-created {
+    animation: bridgeGlow 1.8s ease;
+}
+
+@keyframes bridgeGlow {
+    50% {
+        box-shadow:
+            0 0 45px rgba(255,215,0,.7);
+    }
+}
+
+/* Reveal button */
+
+#reveal-artwork[hidden] {
+    display: none !important;
+}
+
+#reveal-artwork {
+    margin: 30px auto;
+}
+/* THE GRAND FINALE */
+
+.finale {
+    position: relative;
+    min-height: 100vh;
+    padding: 40px 20px 80px;
+    overflow: hidden;
+    text-align: center;
+    background: radial-gradient(
+        ellipse at center,
+        #202b50 0%,
+        #0b1026 65%,
+        #050815 100%
+    );
+    color: #f2d58a;
+}
+
+.finale[hidden] {
+    display: none !important;
+}
+
+/* Starry sky */
+
+.finale-stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(2px 2px at 20% 30%, #fff6d6, transparent),
+        radial-gradient(2px 2px at 75% 15%, #fff6d6, transparent),
+        radial-gradient(2px 2px at 45% 70%, #fff6d6, transparent),
+        radial-gradient(2px 2px at 85% 65%, #fff6d6, transparent),
+        radial-gradient(2px 2px at 10% 85%, #fff6d6, transparent);
+    background-size: 280px 280px;
+    animation: starsTwinkle 4s ease-in-out infinite alternate;
+}
+
+@keyframes starsTwinkle {
+    from { opacity: .3; }
+    to { opacity: 1; }
+}
+
+/* Camera and tree */
+
+.finale-camera {
+    position: relative;
+    width: min(650px, 95vw);
+    margin: 0 auto;
+    transform: scale(1.6);
+    transform-origin: center;
+}
+
+.tree-art {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+/* Threads begin invisible */
+
+.weaving-thread {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+}
+
+/* Begin weaving */
+
+.finale.playing .weaving-thread {
+    animation: weaveThread 5s ease-in-out forwards;
+}
+
+.finale.playing .weaving-thread:nth-child(2) {
+    animation-delay: .5s;
+}
+
+.finale.playing .weaving-thread:nth-child(3) {
+    animation-delay: 1s;
+}
+
+.finale.playing .weaving-thread:nth-child(4) {
+    animation-delay: 1.5s;
+}
+
+.finale.playing .weaving-thread:nth-child(5) {
+    animation-delay: 2s;
+}
+
+@keyframes weaveThread {
+    to { stroke-dashoffset: 0; }
+}
+
+/* Cinematic zoom out */
+
+.finale.playing .finale-camera {
+    animation: cameraReveal 9s ease-in-out forwards;
+}
+
+@keyframes cameraReveal {
+    0%, 30% {
+        transform: scale(1.6);
+    }
+
+    100% {
+        transform: scale(.85);
+    }
+}
+
+/* Blossoms bloom */
+
+.tree-blossoms circle {
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+.finale.playing .tree-blossoms circle {
+    animation: blossomBloom 1.4s ease forwards;
+    animation-delay: 6.5s;
+}
+
+@keyframes blossomBloom {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Final message */
+
+.final-message {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.finale.finished .final-message {
+    opacity: 1;
+    visibility: visible;
+    animation: finalMessageAppear 2s ease;
+}
+
+@keyframes finalMessageAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.final-message h2 {
+    font-size: clamp(30px, 5vw, 50px);
+    font-weight: normal;
+}
+
+.final-message p {
+    line-height: 1.9;
+}
+
+.final-quote {
+    font-size: 20px;
+    font-style: italic;
+    color: #ffe6a0;
+}
+
+.final-quote strong {
+    display: block;
+    margin-top: 10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .finale.playing .weaving-thread {
+        animation: none;
+        stroke-dashoffset: 0;
+    }
+
+    .finale.playing .finale-camera {
+        animation: none;
+        transform: scale(.85);
+    }
+
+    .finale.playing .tree-blossoms circle {
+        animation: none;
+        opacity: 1;
+        transform: scale(1);
+    }
+}

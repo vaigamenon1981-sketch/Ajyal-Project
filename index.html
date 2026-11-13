@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+        <title>
+            The Invisible Thread
+        
+        </title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <main class="welcome">
+            <h1 id="animated-title">The Invisible Thread</h1>
+            <p class="subtitle">
+                Every beautiful moment tells a story
+            </p>
+            <div class="thread-divider">
+                <span class="thread left"></span>
+                <span class="sparkle">✨</span>
+                <span class="thread right"></span>
+            </div>
+            <p class="tagline">
+                A thousand little moments.
+                One extraordinary masterpiece..
+            </p>
+            <button id="begin-btn" class="begin-btn">
+                Begin your journey
+                <span>⭐</span>
+            </button>
+            <div id="transition" class="transition-screen">
+                <div class="transition-thread"></div>
+                <p>Every connection begins with a moment</p>
+            </div>
+        </main>
+        <section id="scene-one" class="story-scene" hidden>
+    <h2>Chapter One: The Forgotten Letter</h2>
+
+    <p class="scene-description">
+        The evening is quiet. On an old bench,
+        something catches your attention...
+    </p>
+
+    <div class="story-world">
+        <div class="sun"></div>
+        <div class="building building-left"></div>
+        <div class="building building-right"></div>
+
+        <div class="bench">
+            <div class="bench-seat"></div>
+            <div class="bench-leg left-leg"></div>
+            <div class="bench-leg right-leg"></div>
+        </div>
+
+        <button id="letter" class="letter"
+                aria-label="Examine the forgotten letter">
+            ✉️
+        </button>
+        <div id="magic-thread" class="magic-thread"></div>
+    </div>
+
+    <div id="story-dialogue" class="story-dialogue" hidden>
+        <p>
+            A letter, carefully folded.
+            On its front, three words:
+            "To my friend."
+        </p>
+
+        <p>What would you do?</p>
+
+        <button class="choice" data-choice="return">
+            Try to find its owner
+        </button>
+
+        <button class="choice" data-choice="leave">
+            Leave it somewhere safe
+        </button>
+    </div>
+
+    <p id="story-result" class="story-result"
+       aria-live="polite"></p>
+       <button id="continue-two" class="begin-btn"hidden>
+        Follow the Golden Thread
+       </button>
+</section>
+<!-- CHAPTER TWO -->
+
+<section id="scene-two" class="story-scene" hidden>
+
+    <p class="eyebrow">CHAPTER TWO</p>
+
+    <h2>The Weight We Share</h2>
+
+    <p class="scene-description">
+        A little further down the street,
+        you notice someone struggling...
+    </p>
+
+    <div class="story-world second-world">
+
+        <div class="sun"></div>
+
+        <div class="building building-left"></div>
+        <div class="building building-right"></div>
+
+        <div class="streetlamp">
+            <div class="lamp-light"></div>
+            <div class="lamp-post"></div>
+        </div>
+
+        <button id="woman" class="woman"
+                aria-label="Approach the woman">
+            <span class="woman-head"></span>
+            <span class="woman-body"></span>
+            <span class="grocery-bag"></span>
+        </button>
+
+        <div id="thread-two" class="magic-thread"></div>
+
+    </div>
+    <button id="help-button" class="help-button">
+        Offer to help?
+    </button>
+
+    <div id="dialogue-two" class="story-dialogue" hidden>
+
+        <p>
+            "Oh dear," she murmurs,
+            looking at her heavy bags.
+            "I don't think I can carry
+            all of these home."
+        </p>
+
+        <p>What would you do?</p>
+
+        <button class="choice-two" data-choice="carry">
+            Offer to carry her bags
+        </button>
+
+        <button class="choice-two" data-choice="assist">
+            Find someone who can help
+        </button>
+
+    </div>
+
+    <p id="result-two" class="story-result"
+       aria-live="polite"></p>
+
+    <button id="next-chapter" class="begin-btn"
+            hidden>
+        Continue Your Journey ✧
+    </button>
+
+</section>
+<!-- CHAPTER THREE -->
+
+<section id="scene-three" class="story-scene" hidden>
+
+    <p class="eyebrow">CHAPTER THREE</p>
+    <h2>A Place to Belong</h2>
+
+    <p class="scene-description">
+        As the evening settles, laughter echoes
+        from a nearby playground.
+        But someone seems to be missing out...
+    </p>
+
+    <div class="story-world playground-world">
+
+        <div class="sun"></div>
+
+        <div class="playground-ground"></div>
+
+        <div class="swing-frame">
+            <div class="swing-rope rope-left"></div>
+            <div class="swing-rope rope-right"></div>
+            <div class="swing-seat"></div>
+        </div>
+
+        <div class="playground-bench">
+            <div class="playground-bench-seat"></div>
+        </div>
+
+        <div class="lonely-child">
+            <div class="child-head"></div>
+            <div class="child-body"></div>
+        </div>
+        <!-- Glowing fireflies -->
+<div class="firefly firefly-one"></div>
+<div class="firefly firefly-two"></div>
+<div class="firefly firefly-three"></div>
+<div class="firefly firefly-four"></div>
+<div class="firefly firefly-five"></div>
+
+        <div id="thread-three" class="magic-thread"></div>
+
+    </div>
+
+    <button id="approach-child" class="help-button">
+        ✧ Approach the Child
+    </button>
+
+    <div id="dialogue-three" class="story-dialogue" hidden>
+        <p>
+            "Everyone already has someone to play with,"
+            the child says softly.
+            "I don't think there's a place for me."
+        </p>
+
+        <p>What would you do?</p>
+
+        <button class="choice-three" data-choice="invite">
+            Invite them to join a game
+        </button>
+
+        <button class="choice-three" data-choice="talk">
+            Sit beside them and start a conversation
+        </button>
+    </div>
+
+    <p id="result-three" class="story-result"
+       aria-live="polite"></p>
+
+    <button id="continue-four" class="help-button" hidden>
+        Follow the Golden Thread ✧
+    </button>
+
+</section>
+<!-- CHAPTER FOUR -->
+
+<section id="scene-four" class="story-scene" hidden>
+
+    <p class="eyebrow">CHAPTER FOUR</p>
+    <h2>The Smallest Life</h2>
+
+    <p class="scene-description">
+        A quiet garden glows beneath the moon.
+        Among the flowers, you notice a little bird
+        resting beside an empty water dish...
+    </p>
+
+    <div class="story-world garden-world">
+
+        <div class="garden-moon"></div>
+        <div class="garden-ground"></div>
+
+        <div class="garden-flower flower-one">✿</div>
+        <div class="garden-flower flower-two">✿</div>
+        <div class="garden-flower flower-three">✿</div>
+        <div class="garden-flower flower-four">✿</div>
+
+        <div class="garden-bird" aria-hidden="true">
+            <div class="bird-body"></div>
+            <div class="bird-head"></div>
+            <div class="bird-eye"></div>
+            <div class="bird-beak"></div>
+        </div>
+
+        <div class="water-dish"></div>
+
+        <div id="thread-four" class="magic-thread"></div>
+
+    </div>
+
+    <button id="help-bird" class="help-button">
+        ✧ Help the Little Bird
+    </button>
+
+    <div id="dialogue-four" class="story-dialogue" hidden>
+        <p>
+            The little bird looks tired.
+            Its water dish is empty, and the
+            afternoon heat has only just faded.
+        </p>
+
+        <p>What would you do?</p>
+
+        <button class="choice-four" data-choice="water">
+            Fill its water dish
+        </button>
+
+        <button class="choice-four" data-choice="care">
+            Find a safe, quiet place and ask an adult for help
+        </button>
+    </div>
+
+    <p id="result-four" class="story-result"
+       aria-live="polite"></p>
+
+    <button id="continue-five" class="help-button" hidden>
+        Continue Your Journey ✧
+    </button>
+
+</section>
+<!-- CHAPTER FIVE -->
+
+<section id="scene-five" class="story-scene" hidden>
+
+    <p class="eyebrow">THE FINAL CHAPTER</p>
+    <h2>The Bridge Between Us</h2>
+
+    <p class="scene-description">
+        Beneath the evening stars, two friends stand
+        on opposite sides of a bridge.
+        Neither knows how to begin speaking again...
+    </p>
+
+    <div class="story-world bridge-world">
+
+        <div class="bridge-moon"></div>
+
+        <div class="bridge-water"></div>
+
+        <div class="bridge-path"></div>
+
+        <div class="bridge-railing"></div>
+
+        <div class="friend friend-left">
+            <div class="friend-head"></div>
+            <div class="friend-body"></div>
+        </div>
+
+        <div class="friend friend-right">
+            <div class="friend-head"></div>
+            <div class="friend-body"></div>
+        </div>
+
+        <div id="thread-five" class="magic-thread"></div>
+
+    </div>
+
+    <button id="help-friends" class="help-button">
+        ✧ Help Them Reconnect
+    </button>
+
+    <div id="dialogue-five" class="story-dialogue" hidden>
+
+        <p>
+            One friend whispers,
+            "I miss talking to them, but I don't
+            know if they want to hear from me."
+        </p>
+
+        <p>What would you do?</p>
+
+        <button class="choice-five" data-choice="encourage">
+            Encourage an honest conversation
+        </button>
+
+        <button class="choice-five" data-choice="listen">
+            Listen to both friends first
+        </button>
+
+    </div>
+
+    <p id="result-five" class="story-result"
+       aria-live="polite"></p>
+
+    <button id="reveal-artwork" class="help-button" hidden>
+        ✧ Discover What You've Created
+    </button>
+
+</section>
+<!-- THE GRAND FINALE -->
+
+<section id="finale" class="finale" hidden>
+
+    <div class="finale-stars"></div>
+
+    <div id="finale-camera" class="finale-camera">
+
+        <svg class="tree-art"
+             viewBox="0 0 600 600"
+             xmlns="http://www.w3.org/2000/svg"
+             role="img"
+             aria-label="Five golden threads weaving into a glowing tree">
+
+            <defs>
+                <filter id="gold-glow">
+                    <feGaussianBlur stdDeviation="4"
+                                    result="blur"/>
+                    <feMerge>
+                        <feMergeNode in="blur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+
+                <linearGradient id="tree-gold"
+                                x1="0" y1="1"
+                                x2="0" y2="0">
+                    <stop offset="0%" stop-color="#a97730"/>
+                    <stop offset="50%" stop-color="#ffe6a0"/>
+                    <stop offset="100%" stop-color="#fff6d6"/>
+                </linearGradient>
+            </defs>
+
+            <!-- Five magical threads -->
+            <g class="golden-threads"
+               fill="none"
+               stroke="url(#tree-gold)"
+               stroke-width="3"
+               stroke-linecap="round"
+               filter="url(#gold-glow)">
+
+                <path class="weaving-thread"
+                      d="M60 580 Q150 480 280 400
+                         Q320 300 170 180
+                         Q130 145 100 115"/>
+
+                <path class="weaving-thread"
+                      d="M540 580 Q450 480 320 400
+                         Q280 300 430 180
+                         Q470 145 500 115"/>
+
+                <path class="weaving-thread"
+                      d="M300 600 Q260 470 300 390
+                         Q350 280 300 100"/>
+
+                <path class="weaving-thread"
+                      d="M100 500 Q230 460 290 370
+                         Q240 260 190 100"/>
+
+                <path class="weaving-thread"
+                      d="M500 500 Q370 460 310 370
+                         Q360 260 410 100"/>
+
+            </g>
+
+            <!-- Magical blossoms -->
+            <g class="tree-blossoms" fill="#ffe6a0">
+                <circle cx="100" cy="115" r="8"/>
+                <circle cx="500" cy="115" r="8"/>
+                <circle cx="300" cy="100" r="10"/>
+                <circle cx="190" cy="100" r="8"/>
+                <circle cx="410" cy="100" r="8"/>
+
+                <circle cx="170" cy="180" r="5"/>
+                <circle cx="430" cy="180" r="5"/>
+                <circle cx="240" cy="260" r="5"/>
+                <circle cx="360" cy="260" r="5"/>
+            </g>
+
+        </svg>
+
+    </div>
+
+    <div id="final-message" class="final-message">
+        <p class="eyebrow">YOUR MASTERPIECE</p>
+
+        <h2>The Beauty You Leave Behind</h2>
+
+        <p>
+            Every act of kindness leaves a trace.
+            Every moment of compassion creates a connection.
+        </p>
+
+        <p class="final-quote">
+            You were never just witnessing beautiful moments.
+            <strong>You were creating them.</strong>
+        </p>
+
+        <button id="replay-finale" class="help-button">
+            ✧ Watch the Magic Again
+        </button>
+    </div>
+
+</section>
+        <script src="script.js"></script>
+        
+    </body>
+</html>
